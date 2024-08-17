@@ -18,6 +18,7 @@ app.get("/operar", (req, res) => {
   const oper = req.query.oper as string;
 
   const resultado = operar(oper, a, b);
+
   res.send(`el resultado de la operacion ${oper} de ${a} y ${b} es ${resultado}`);
 });
 
