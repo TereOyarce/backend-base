@@ -1,6 +1,7 @@
 import express from "express";
 import { configuration } from "./config.js";
-import { operar, suma } from "./calculadora.js";
+import { operar } from "./calculadora.js";
+import fs from "fs";
 
 const app = express();
 
@@ -8,6 +9,14 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send(`Hola mundo al usuario ${configuration.username}`);
+
+  fs.appendFile("/tmp/test", "Hey there!\n", function(err:any) {
+    if(err) {
+        return console.log(err);
+    }
+    console.log("The file was saved!");
+}); 
+
 });
 
 app.get("/operar", (req, res) => {
